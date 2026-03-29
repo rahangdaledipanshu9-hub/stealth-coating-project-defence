@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SHIELD TECH — Stealth Coating for Defence Assets</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- SCROLL PROGRESS -->
+<div id="scroll-progress"></div>
+
+<!-- CUSTOM CURSOR -->
+<div class="cursor-dot" id="cursor-dot"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
+
+<!-- PARTICLE CANVAS -->
+<canvas id="particle-canvas"></canvas>
+
+<!-- HUD -->
+<div id="hud">
+  <div class="hud-panel">
+    <div>SIGNAL STRENGTH</div>
+    <div class="hud-signal" id="hud-signal">
+      <span style="height:6px"></span>
+      <span style="height:9px"></span>
+      <span style="height:12px"></span>
+      <span style="height:15px"></span>
+      <span style="height:18px"></span>
+    </div>
+  </div>
+  <div class="hud-panel">
+    <div>SCROLL DEPTH</div>
+    <div class="hud-val" id="hud-scroll">0%</div>
+    <div class="hud-bar"><div class="hud-bar-fill" id="hud-bar" style="width:0%"></div></div>
+  </div>
+  <div class="hud-panel">
+    <div>SECTION</div>
+    <div class="hud-val" id="hud-section">OVERVIEW</div>
+  </div>
+  <div class="hud-panel">
+    <div>STATUS</div>
+    <div class="hud-val" style="color:var(--green)" id="hud-status">● ACTIVE</div>
+  </div>
+</div>
+
+<!-- SCROLL TO TOP -->
+<button id="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<div class="grid-bg"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">SHIELD TECH</div>
+  <ul class="nav-links">
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#howitworks">Mechanism</a></li>
+    <li><a href="#performance">Performance</a></li>
+    <li><a href="#materials">Materials</a></li>
+    <li><a href="#lifecycle">Lifecycle</a></li>
+    <li><a href="#cost">Cost</a></li>
+    <li><a href="#feasibility">Feasibility</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#innovation">Innovation</a></li>
+  </ul>
+  <div class="nav-badge">SIH 2025</div>
+</nav>
+
+<!-- HERO -->
+<div class="hero" id="overview">
+  <div class="hero-ring"></div>
+  <div class="hero-ring"></div>
+  <div class="hero-ring"></div>
+  <div class="hero-ring"></div>
+
+  <div class="hero-content">
+  <p class="hero-label">SMART INDIA HACKATHON 2025 · TEAM SHIELD TECH · DEFENCE TECHNOLOGY</p>
+  <h1 class="hero-title glitch" data-text="STEALTH COATINGFOR DEFENCE ASSETS">STEALTH COATING<br>FOR DEFENCE ASSETS</h1>
+  <p class="hero-sub typing-cursor" id="hero-sub"></p>
+
+  <div class="hero-stats">
+    <div data-tip="VNA measurement at 10 GHz peak">
+      <div class="hero-stat-val count-up" data-target="-33.7" data-suffix=" dB">−33.7 dB</div>
+      <div class="hero-stat-label">REFLECTION LOSS</div>
+    </div>
+    <div data-tip="Absorptivity = 1 − 10^(RL/10)">
+      <div class="hero-stat-val count-up" data-target="99.95" data-suffix="%">99.95%</div>
+      <div class="hero-stat-label">ABSORPTIVITY</div>
+    </div>
+    <div data-tip="FTIR-weighted average, 2–12 µm range">
+      <div class="hero-stat-val count-up" data-target="89.6" data-suffix="%">89.6%</div>
+      <div class="hero-stat-label">THERMAL ABSORPTIVITY</div>
+    </div>
+    <div data-tip="Total dual-layer system thickness">
+      <div class="hero-stat-val">2 mm</div>
+      <div class="hero-stat-label">COATING THICKNESS</div>
+    </div>
+  </div>
+
+  <div class="hero-cta">
+    <a href="#howitworks" class="btn-primary">EXPLORE TECHNOLOGY</a>
+    <a href="#performance" class="btn-outline">VIEW ANALYSIS</a>
+  </div>
+  </div>
+</div>
+
+<!-- METRIC STRIP -->
+<div class="metric-strip">
+  <div>
+    <div class="m-val">₹42,400</div>
+    <div class="m-label">COST PER m²</div>
+  </div>
+  <div class="m-divider"></div>
+  <div>
+    <div class="m-val">6–7 yrs</div>
+    <div class="m-label">SERVICE LIFE</div>
+  </div>
+  <div class="m-divider"></div>
+  <div>
+    <div class="m-val">25%</div>
+    <div class="m-label">COST REDUCTION VS CONVENTIONAL</div>
+  </div>
+  <div class="m-divider"></div>
+  <div>
+    <div class="m-val">8–18 GHz</div>
+    <div class="m-label">OPERATING BANDWIDTH</div>
+  </div>
+  <div class="m-divider"></div>
+  <div>
+    <div class="m-val">2-Layer</div>
+    <div class="m-label">COATING SYSTEM</div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- HOW IT WORKS ON SUBSTRATE -->
+<section id="howitworks">
+  <div class="reveal">
+    <div class="section-tag">TECHNICAL ARCHITECTURE</div>
+    <h2 class="section-title">How It Works on <span class="accent">Substrate</span></h2>
+  </div>
+
+  <div class="substrate-grid reveal">
+    <div class="layer-diagram">
+      <p style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:0.15em;margin-bottom:16px;">CROSS-SECTION LAYER STACK</p>
+      <div class="layer-stack">
+        <div class="layer layer-air">
+          <div><div class="layer-name">INCIDENT EM WAVE</div><div class="layer-desc">Radar/microwave signal</div></div>
+          <div class="layer-thick">↓</div>
+        </div>
+        <div class="layer layer-topcoat">
+          <div><div class="layer-name">POLYASPARTIC TOPCOAT</div><div class="layer-desc">UV-resistant, fast-cure, RAM-loaded</div></div>
+          <div class="layer-thick">0.8 mm</div>
+        </div>
+        <div class="layer layer-ram">
+          <div><div class="layer-name">RAM COMPOSITE LAYER</div><div class="layer-desc">Carbonyl Fe · Barium Ferrite · ZnO</div></div>
+          <div class="layer-thick">0.9 mm</div>
+        </div>
+        <div class="layer layer-primer">
+          <div><div class="layer-name">EPOXY PRIMER</div><div class="layer-desc">Adhesion, corrosion barrier</div></div>
+          <div class="layer-thick">0.3 mm</div>
+        </div>
+        <div class="layer layer-substrate">
+          <div><div class="layer-name">METAL SUBSTRATE</div><div class="layer-desc">Aircraft / vehicle / ship hull</div></div>
+          <div class="layer-thick">—</div>
+        </div>
+      </div>
+      <p style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);margin-top:12px;">Total coating: <span style="color:var(--cyan)">~2.0 mm</span> · Total weight: ~<span style="color:var(--cyan)">3.2 kg/m²</span></p>
+    </div>
+
+    <div>
+      <ul class="mechanism-list">
+        <li class="mechanism-item">
+          <div class="mech-num">01</div>
+          <div>
+            <div class="mech-title">Impedance Matching</div>
+            <div class="mech-desc">ZnO and the graded dielectric constant of the RAM layer minimises surface reflection. The wave enters the coating with minimal bounce-back, allowing deep penetration for absorption.</div>
+          </div>
+        </li>
+        <li class="mechanism-item">
+          <div class="mech-num">02</div>
+          <div>
+            <div class="mech-title">Magnetic Loss (µ″)</div>
+            <div class="mech-desc">Carbonyl iron and barium ferrite exhibit high imaginary permeability, dissipating energy via magnetic domain resonance at GHz frequencies.</div>
+          </div>
+        </li>
+        <li class="mechanism-item">
+          <div class="mech-num">03</div>
+          <div>
+            <div class="mech-title">Dielectric Loss (ε″)</div>
+            <div class="mech-desc">Iron oxide contributes polarisation and conduction losses, converting residual EM energy into thermal energy within the matrix.</div>
+          </div>
+        </li>
+        <li class="mechanism-item">
+          <div class="mech-num">04</div>
+          <div>
+            <div class="mech-title">Thermal Signature Suppression</div>
+            <div class="mech-desc">IR-reflective pigments in the topcoat reduce emissivity, masking the thermal signature from IR-guided sensors and thermal cameras.</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- PERFORMANCE ANALYSIS -->
+<section id="performance">
+  <div class="reveal">
+    <div class="section-tag">DATA ANALYSIS</div>
+    <h2 class="section-title">Performance <span class="accent">Analysis</span></h2>
+  </div>
+
+  <div class="charts-grid reveal">
+    <div class="chart-card">
+      <div class="chart-card-title">REFLECTION LOSS vs FREQUENCY (GHz)</div>
+      <canvas id="rlChart" height="200"></canvas>
+    </div>
+    <div class="chart-card">
+      <div class="chart-card-title">ABSORPTIVITY vs FREQUENCY (%)</div>
+      <canvas id="absChart" height="200"></canvas>
+    </div>
+    <div class="chart-card">
+      <div class="chart-card-title">THERMAL ABSORPTIVITY SPECTRUM</div>
+      <canvas id="irChart" height="200"></canvas>
+    </div>
+  </div>
+
+  <div class="big-charts reveal">
+    <div class="chart-card">
+      <div class="chart-card-title">RADAR CROSS-SECTION REDUCTION (%)</div>
+      <canvas id="rcsChart" height="240"></canvas>
+    </div>
+    <div class="chart-card">
+      <div class="chart-card-title">MULTI-PARAMETER PERFORMANCE RADAR</div>
+      <canvas id="radarChart" height="240"></canvas>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- MATERIALS -->
+<section id="materials">
+  <div class="reveal">
+    <div class="section-tag">MATERIAL SCIENCE</div>
+    <h2 class="section-title">Materials <span class="accent">Used</span></h2>
+  </div>
+  <div class="mat-grid reveal">
+    <div class="mat-card">
+      <div class="mat-icon">CARBONYL IRON</div>
+      <div class="mat-name">Fe (Carbonyl)</div>
+      <div class="mat-prop">Primary radar absorber. High saturation magnetisation and tunable permeability across 1–18 GHz. Spherical particles for isotropic absorption.</div>
+      <div class="mat-pct"><div class="mat-pct-fill" style="width:85%;background:var(--cyan)"></div></div>
+      <p style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);margin-top:4px;">Effectiveness: 85%</p>
+    </div>
+    <div class="mat-card">
+      <div class="mat-icon">BARIUM FERRITE</div>
+      <div class="mat-name">BaFe₁₂O₁₉</div>
+      <div class="mat-prop">Hexagonal ferrite with hard magnetic properties. High natural resonance frequency (45–55 GHz) makes it ideal for mmWave and X-band absorption.</div>
+      <div class="mat-pct"><div class="mat-pct-fill" style="width:78%;background:var(--blue)"></div></div>
+      <p style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);margin-top:4px;">Effectiveness: 78%</p>
+    </div>
+    <div class="mat-card">
+      <div class="mat-icon">IRON OXIDE</div>
+      <div class="mat-name">Fe₂O₃ / Fe₃O₄</div>
+      <div class="mat-prop">Dielectric loss contribution. Acts as a secondary absorber and enhances matrix stability. Provides broadband coverage via interfacial polarisation.</div>
+      <div class="mat-pct"><div class="mat-pct-fill" style="width:65%;background:var(--amber)"></div></div>
+      <p style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);margin-top:4px;">Effectiveness: 65%</p>
+    </div>
+    <div class="mat-card">
+      <div class="mat-icon">ZINC OXIDE</div>
+      <div class="mat-name">ZnO</div>
+      <div class="mat-prop">Impedance matching agent. Tunes the complex permittivity of the composite to minimise surface reflection and maximise wave penetration depth.</div>
+      <div class="mat-pct"><div class="mat-pct-fill" style="width:72%;background:var(--green)"></div></div>
+      <p style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);margin-top:4px;">Effectiveness: 72%</p>
+    </div>
+    <div class="mat-card">
+      <div class="mat-icon">EPOXY RESIN</div>
+      <div class="mat-name">Epoxy (Primer)</div>
+      <div class="mat-prop">Two-part thermoset binder. Provides exceptional adhesion to metallic substrates, corrosion resistance, and mechanical stability under vibration and thermal cycling.</div>
+      <div class="mat-pct"><div class="mat-pct-fill" style="width:90%;background:var(--cyan)"></div></div>
+      <p style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);margin-top:4px;">Adhesion rating: 90%</p>
+    </div>
+    <div class="mat-card">
+      <div class="mat-icon">POLYASPARTIC</div>
+      <div class="mat-name">Polyaspartic Resin</div>
+      <div class="mat-prop">Aliphatic polyurea-based topcoat. UV-stable, fast-cure (2–4 hrs), extreme weather resistance (−40°C to +120°C), and excellent hardness.</div>
+      <div class="mat-pct"><div class="mat-pct-fill" style="width:95%;background:var(--amber)"></div></div>
+      <p style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);margin-top:4px;">Durability: 95%</p>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- LIFECYCLE -->
+<section id="lifecycle">
+  <div class="reveal">
+    <div class="section-tag">LIFECYCLE &amp; PERFORMANCE DEGRADATION</div>
+    <h2 class="section-title">Performance Over <span class="accent">Time</span></h2>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;" class="reveal">
+    <div>
+      <div class="lifecycle-timeline">
+        <div class="timeline-item">
+          <div class="timeline-year">YEAR 0 — DEPLOYMENT</div>
+          <div class="timeline-title">Initial Installation</div>
+          <div class="timeline-desc">Coating applied to substrate. Full stealth performance achieved post cure. Surface inspection and VNA verification.</div>
+          <div class="timeline-rl" style="color:var(--green)">RL = −30 dB · Absorptivity: 99.90%</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">YEAR 2 — OPERATIONAL</div>
+          <div class="timeline-title">First Inspection Window</div>
+          <div class="timeline-desc">Environmental exposure (humidity, UV, thermal cycling) begins degrading surface. Minor touch-up recommended if RL crosses −24 dB threshold.</div>
+          <div class="timeline-rl" style="color:var(--cyan)">RL ≈ −24 dB · Absorptivity: ~99.6%</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">YEAR 4 — MAINTENANCE</div>
+          <div class="timeline-title">Scheduled Maintenance</div>
+          <div class="timeline-desc">Topcoat reapplication required. Primer and RAM layer typically intact. Cost effective partial re-coating (~30% of initial cost).</div>
+          <div class="timeline-rl" style="color:var(--amber)">RL ≈ −18 dB · Absorptivity: ~98.4%</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">YEAR 6 — RE-COAT</div>
+          <div class="timeline-title">Full System Re-coating</div>
+          <div class="timeline-desc">Complete stripping and re-application of all layers. System reset to Year 0 performance. Lifecycle repeatable 2–3 times per asset.</div>
+          <div class="timeline-rl" style="color:var(--red)">RL ≈ −12 dB · Full recoat required</div>
+        </div>
+      </div>
+    </div>
+    <div class="chart-card" style="align-self:start;">
+      <div class="chart-card-title">REFLECTION LOSS DEGRADATION OVER 6 YEARS</div>
+      <canvas id="degradeChart" height="260"></canvas>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- COST ANALYSIS -->
+<section id="cost">
+  <div class="reveal">
+    <div class="section-tag">COST ANALYSIS</div>
+    <h2 class="section-title">Cost <span class="accent">Breakdown</span></h2>
+  </div>
+  <div class="cost-grid reveal">
+    <div>
+      <div class="stat-block">
+        <div class="stat-val">₹42,400</div>
+        <div class="stat-desc">Total initial cost per m² (materials + labour + overhead)</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-val">₹72,500</div>
+        <div class="stat-desc">10-year lifecycle cost per m²</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-val">₹7,250</div>
+        <div class="stat-desc">Average annualised cost per m²</div>
+      </div>
+      <div style="margin-top:32px; padding:20px; background:rgba(16,185,129,0.08); border:1px solid rgba(16,185,129,0.3); border-radius:4px;">
+        <p style="font-family:'DM Mono',monospace;font-size:10px;color:var(--green);letter-spacing:0.15em;margin-bottom:8px;">COMPETITIVE ADVANTAGE</p>
+        <p style="font-size:13px;color:var(--muted);line-height:1.7;">SHIELD TECH's formulation achieves a <strong style="color:var(--text)">20–25% cost reduction</strong> versus conventional RAM coatings (e.g., Salisbury screens, commercial ferrite tiles) while maintaining equivalent or superior stealth performance.</p>
+      </div>
+    </div>
+    <div>
+      <p style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:0.15em;margin-bottom:20px;">COST COMPONENT BREAKDOWN</p>
+      <div class="cost-bar-row">
+        <div class="cost-bar-label"><span>Polyaspartic Topcoat</span><span>₹18,800/L · 44%</span></div>
+        <div class="cost-bar-track"><div class="cost-bar-fill" style="width:44%;background:var(--cyan)"></div></div>
+      </div>
+      <div class="cost-bar-row">
+        <div class="cost-bar-label"><span>Carbonyl Iron / RAM Fillers</span><span>28%</span></div>
+        <div class="cost-bar-track"><div class="cost-bar-fill" style="width:28%;background:var(--blue)"></div></div>
+      </div>
+      <div class="cost-bar-row">
+        <div class="cost-bar-label"><span>Epoxy Primer</span><span>₹2,000/L · 12%</span></div>
+        <div class="cost-bar-track"><div class="cost-bar-fill" style="width:12%;background:var(--green)"></div></div>
+      </div>
+      <div class="cost-bar-row">
+        <div class="cost-bar-label"><span>Labour &amp; Application</span><span>10%</span></div>
+        <div class="cost-bar-track"><div class="cost-bar-fill" style="width:10%;background:var(--amber)"></div></div>
+      </div>
+      <div class="cost-bar-row">
+        <div class="cost-bar-label"><span>QC, Testing &amp; Overhead</span><span>6%</span></div>
+        <div class="cost-bar-track"><div class="cost-bar-fill" style="width:6%;background:var(--muted)"></div></div>
+      </div>
+      <div style="margin-top:28px;">
+        <div class="chart-card-title" style="margin-bottom:16px;">COST vs CONVENTIONAL SYSTEMS (₹/m²)</div>
+        <canvas id="costCompChart" height="200"></canvas>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- FEASIBILITY -->
+<section id="feasibility">
+  <div class="reveal">
+    <div class="section-tag">FEASIBILITY ASSESSMENT</div>
+    <h2 class="section-title">Technical, Social &amp; <span class="accent">Economic Feasibility</span></h2>
+  </div>
+  <div class="feasibility-grid reveal">
+    <div class="feasibility-card">
+      <div class="feasibility-icon" style="background:rgba(0,212,255,0.1);">⚙</div>
+      <div class="feasibility-title">Technical Feasibility</div>
+      <div class="feasibility-desc">All constituent materials are commercially available with established supply chains. Application methods (spray/brush) are standard industrial processes compatible with existing defence maintenance infrastructure. VNA-verified results at -33.7 dB exceed DRDO's -20 dB benchmark.</div>
+      <div class="feasibility-tags">
+        <span class="tag tag-cyan">DRDO COMPATIBLE</span>
+        <span class="tag tag-cyan">VNA VERIFIED</span>
+        <span class="tag tag-cyan">SPRAY APPLICABLE</span>
+      </div>
+    </div>
+    <div class="feasibility-card">
+      <div class="feasibility-icon" style="background:rgba(245,158,11,0.1);">₹</div>
+      <div class="feasibility-title">Economic Feasibility</div>
+      <div class="feasibility-desc">At ₹42,400/m², coating a typical fighter aircraft (~200m² exposed surface) costs ~₹84.8 lakhs — a fraction of the platform cost. The 6–7 year service life with partial re-coating at Year 4 delivers a strong lifecycle ROI versus platform replacement or detection risk costs.</div>
+      <div class="feasibility-tags">
+        <span class="tag tag-amber">25% COST REDUCTION</span>
+        <span class="tag tag-amber">SCALABLE</span>
+        <span class="tag tag-amber">HIGH ROI</span>
+      </div>
+    </div>
+    <div class="feasibility-card">
+      <div class="feasibility-icon" style="background:rgba(16,185,129,0.1);">🌐</div>
+      <div class="feasibility-title">Social &amp; Strategic Impact</div>
+      <div class="feasibility-desc">Indigenous development reduces dependence on imported stealth technology (US, Russia). Aligns with Atmanirbhar Bharat and DRDO Make-in-India initiatives. Potential for dual-use in civilian aerospace noise/EMI shielding, generating economic spillover benefits.</div>
+      <div class="feasibility-tags">
+        <span class="tag tag-green">ATMANIRBHAR</span>
+        <span class="tag tag-green">DUAL-USE</span>
+        <span class="tag tag-green">IP CREATION</span>
+      </div>
+    </div>
+    <div class="feasibility-card">
+      <div class="feasibility-icon" style="background:rgba(239,68,68,0.1);">⚠</div>
+      <div class="feasibility-title">Risk &amp; Mitigation</div>
+      <div class="feasibility-desc">Performance degrades ~3 dB/year under harsh environmental conditions. Mitigated via scheduled maintenance cycles and field-applicable touch-up kits. Regulatory pathway via DRDO/HAL qualification trials estimated at 18–24 months.</div>
+      <div class="feasibility-tags">
+        <span class="tag tag-cyan">MAINTAINABLE</span>
+        <span class="tag tag-amber">DRDO TRIALS</span>
+        <span class="tag tag-green">LOW RISK</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ROADMAP -->
+<section id="roadmap">
+  <div class="reveal">
+    <div class="section-tag">DEVELOPMENT ROADMAP</div>
+    <h2 class="section-title">Path to <span class="accent">Deployment</span></h2>
+  </div>
+  <div class="roadmap-phases reveal">
+    <div class="phase-card">
+      <div class="phase-dot" style="border-color:var(--green);color:var(--green);">01</div>
+      <div class="phase-date">Q1–Q2 2025</div>
+      <div class="phase-title">Lab Prototype</div>
+      <div class="phase-items">
+        Formulation optimisation<br>
+        VNA &amp; FTIR characterisation<br>
+        SIH submission<br>
+        IP documentation
+      </div>
+    </div>
+    <div class="phase-card">
+      <div class="phase-dot" style="border-color:var(--cyan);color:var(--cyan);">02</div>
+      <div class="phase-date">Q3 2025–Q1 2026</div>
+      <div class="phase-title">Pilot Testing</div>
+      <div class="phase-items">
+        DRDO/HAL tie-up<br>
+        Scale-up to 10 m² panels<br>
+        Environmental durability tests<br>
+        Adhesion &amp; thermal cycling
+      </div>
+    </div>
+    <div class="phase-card">
+      <div class="phase-dot" style="border-color:var(--blue);color:var(--blue);">03</div>
+      <div class="phase-date">Q2–Q4 2026</div>
+      <div class="phase-title">Field Qualification</div>
+      <div class="phase-items">
+        Full-scale aircraft/ship trials<br>
+        MIL-STD compliance<br>
+        DRDO Type Approval<br>
+        Supply chain finalisation
+      </div>
+    </div>
+    <div class="phase-card">
+      <div class="phase-dot" style="border-color:var(--amber);color:var(--amber);">04</div>
+      <div class="phase-date">2027 onwards</div>
+      <div class="phase-title">Production Deployment</div>
+      <div class="phase-items">
+        HAL / IAF integration<br>
+        Navy &amp; Army rollout<br>
+        Export licensing<br>
+        Civilian aerospace spin-off
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- INNOVATION -->
+<section id="innovation">
+  <div class="reveal">
+    <div class="section-tag">INNOVATION HIGHLIGHTS</div>
+    <h2 class="section-title">What Makes Us <span class="accent">Different</span></h2>
+  </div>
+  <div class="innov-grid reveal">
+    <div class="innov-card">
+      <div class="innov-num">01</div>
+      <div class="innov-title">Ultra-thin at −30 dB</div>
+      <div class="innov-desc">Achieves military-grade −30 dB reflection loss at just 2 mm thickness. Conventional systems require 5–8 mm for equivalent performance, adding significant weight penalty.</div>
+    </div>
+    <div class="innov-card">
+      <div class="innov-num">02</div>
+      <div class="innov-title">Dual-Threat Stealth</div>
+      <div class="innov-desc">Simultaneously suppresses radar return (microwave absorptivity 99.95%) and thermal signature (IR absorptivity 89.6%). Most commercial coatings address only one threat vector.</div>
+    </div>
+    <div class="innov-card">
+      <div class="innov-num">03</div>
+      <div class="innov-title">Full Lifecycle Model</div>
+      <div class="innov-desc">First-of-kind complete cost model integrating initial application, Year 4 maintenance, and Year 6 re-coat into a 10-year total cost of ownership framework for defence procurement.</div>
+    </div>
+    <div class="innov-card">
+      <div class="innov-num">04</div>
+      <div class="innov-title">Indigenous Formulation</div>
+      <div class="innov-desc">All materials sourced from domestic Indian suppliers or globally available commodity markets. Eliminates strategic supply-chain risk and aligns with DRDO self-reliance mandate.</div>
+    </div>
+    <div class="innov-card">
+      <div class="innov-num">05</div>
+      <div class="innov-title">Broadband Coverage</div>
+      <div class="innov-desc">Effective across 8–18 GHz (X and Ku band) — the primary radar bands used by modern air defence systems including AESA radars, SAMs, and ship-borne fire control systems.</div>
+    </div>
+    <div class="innov-card">
+      <div class="innov-num">06</div>
+      <div class="innov-title">20–25% Cost Edge</div>
+      <div class="innov-desc">Optimised particle loading and dual-resin architecture delivers significant cost advantage over commercial Salisbury screens and carbon-fibre RAM panels without compromising performance.</div>
+    </div>
+  </div>
+</section>
+
+<div class="glow-line" style="margin:0 60px;"></div>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-logo">SHIELD TECH</div>
+    <p style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);margin-top:4px;letter-spacing:0.1em;">SMART INDIA HACKATHON 2025</p>
+  </div>
+  <div class="footer-copy">
+    Stealth Coating for Defence Assets · All technical data based on VNA &amp; FTIR analysis
+  </div>
+</footer>
+
+<!-- CHART.JS — loaded before script.js so Chart is available -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<!-- MAIN SCRIPT -->
+<script src="script.js"></script>
+
+</body>
+</html>
